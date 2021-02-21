@@ -5,6 +5,19 @@ const port = 3001;
 
 // Create the global data object where we store the data once when we create the server
 var data;
+
+// Rest api endpoint to get covid data by country
+app.get("/", (req, res) => {
+  // Get the required country through the api parameter
+  var country = req.query.country;
+  // Filter the data array by the country
+  var countryArray = data.filter(function (el) {
+    return el.country === country;
+  });
+
+  res.send(countryArray);
+});
+
 // Do this when creating the server
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
