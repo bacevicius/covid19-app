@@ -7,9 +7,9 @@ const port = 3001;
 var data;
 
 app.get("/allcountries", (req, res) => {
-// Get an array of all countries for construction of dropdown menu
-  const distinctCountries = [...new Set(data.map(item => item.country))];
-  res.send(distinctCountries)
+  // Get an array of all countries for construction of dropdown menu
+  const distinctCountries = [...new Set(data.map((item) => item.country))];
+  res.send(distinctCountries);
 });
 
 // Rest api endpoint to get covid data by country
