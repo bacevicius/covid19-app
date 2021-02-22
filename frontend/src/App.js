@@ -1,5 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import Select from "react-select";
+import Chart from "./ChartComponent";
 
 function App() {
   return (
