@@ -6,7 +6,6 @@ import Chart from "./ChartComponent";
 
 function App() {
   const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("");
   const [data, setData] = useState([]);
@@ -40,12 +39,10 @@ function App() {
       .then((res) => res.json())
       .then(
         (result) => {
-          setIsLoaded(true);
           setCountries(result);
           setCountry("Europe (total)");
         },
         (error) => {
-          setIsLoaded(true);
           setError(error);
         }
       );
@@ -58,7 +55,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <body className="App-body">
         <h3>COVID-19 Statistics by country</h3>
         <h2>{country}</h2>
         <Chart className="chart" country={country} data={data} />
@@ -71,7 +68,7 @@ function App() {
           options={optionsParsed}
           onChange={onDropdownChange}
         />
-      </header>
+      </body>
     </div>
   );
 }
