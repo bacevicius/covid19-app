@@ -56,7 +56,7 @@ function App() {
   return (
     <div className="App">
       <body className="App-body">
-        <h3>COVID-19 Statistics by country</h3>
+        <h2>COVID-19 Weekly Statistics</h2>
         <h2>{country}</h2>
         <Chart className="chart" country={country} data={data} />
         <Select
