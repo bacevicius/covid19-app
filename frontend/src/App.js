@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
@@ -48,7 +47,7 @@ function App() {
       );
   }, []);
 
-  // This useEffect executes every time the country is updated, it calls the covid data update
+  // This useEffect executes every time the country is updated, it calls the covid data update function
   useEffect(() => {
     fetchData(country);
   },[country]);
@@ -61,7 +60,7 @@ function App() {
         <Chart className="chart" country={country} data={data} />
         <Select
           className="country-select"
-          menuPlacement="auto"
+          menuPlacement="top"
           openMenuOnClick={true}
           isClearable={true}
           placeholder="Type or select a country"
