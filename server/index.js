@@ -1,7 +1,14 @@
 const express = require("express");
 const app = express();
+const path = require('path');
 const unirest = require("unirest");
 const port = 3001;
+
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+app.get('/', (req, res) => {
+  res.sendFile('../frontend/build/index.html', { root: global });
+});
 
 // Create the global data object where we store the data once when we create the server
 var data;
@@ -61,7 +68,7 @@ app.get("/country", (req, res) => {
 // Do this when creating the server
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
-
+  console.log("Fetching data from covid API...")
   //Do a get request to the required API and get the covid data
   const request = unirest.get(
     "https://opendata.ecdc.europa.eu/covid19/nationalcasedeath/json/"
@@ -72,6 +79,7 @@ app.listen(port, () => {
 
     // Parse the response json data and save it in a global data object
     data = JSON.parse(JSON.stringify(response.body));
-    console.log("Data fetched successfully");
+    console.log("Data fetched successfully.");
+    console.log(`Go to http://localhost:${port} to access the app!`)
   });
 });
