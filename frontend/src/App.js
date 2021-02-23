@@ -63,7 +63,7 @@ function App() {
           menuPlacement="top"
           openMenuOnClick={true}
           isClearable={true}
-          placeholder="Type or select a country"
+          placeholder="Type/Select a country"
           options={optionsParsed}
           onChange={onDropdownChange}
         />
