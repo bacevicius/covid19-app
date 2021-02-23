@@ -18,11 +18,11 @@ class Chart extends PureComponent {
         <ResponsiveContainer>
           <AreaChart
             data={this.props.data}
-            margin={{ top: 5, right: 50, left: 50, bottom: 90 }}
+            margin={{ top: 5, right: 50, left: 50, bottom: 50 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="year_week" interval={this.props.data} angle={-30} tickMargin={25} tick={{ fontSize: "1.3rem", width: 250 }} />
-            <YAxis tick={{ fontSize: "1.3rem", width: 250 }}  />
+            <XAxis dataKey="year_week" interval={this.props.data} angle={-30} tickMargin={25} tick={{ fontSize: "1.2rem", width: 250 }} />
+            <YAxis tick={{ fontSize: "1.2rem", width: 250 }}  />
             <Tooltip />
             <Legend  verticalAlign="top" align="right"
  />
