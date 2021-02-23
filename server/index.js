@@ -80,6 +80,5 @@ app.listen(port, () => {
     // Parse the response json data and save it in a global data object
     data = JSON.parse(JSON.stringify(response.body));
     console.log("Data fetched successfully.");
-    console.log(`Go to http://localhost:${port} to access the app!`)
   });
 });
