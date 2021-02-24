@@ -27,7 +27,9 @@ function App() {
         (result) => {
           setData(result);
         },
-        (error) => {}
+        (error) => {
+          setError(error);
+        }
       );
   }
 
