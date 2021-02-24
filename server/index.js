@@ -5,7 +5,7 @@ const port = 3001;
 
 // Create the global data object where we store the covid data once when we create the server
 // Dirty, but that's what the assignment requires
-global.data;
+global.data = [];
 
 // Define all the routes our express sever will use
 const main = require('./routes/app');
@@ -19,7 +19,7 @@ app.use('/allcountries', allCountries);
 // Do this when creating the server
 app.listen(port, () => {
   console.log("Fetching data from covid API...");
-  
+
   //Do a get request to the required API and get the covid data
   const request = unirest.get(
     "https://opendata.ecdc.europa.eu/covid19/nationalcasedeath/json/"
