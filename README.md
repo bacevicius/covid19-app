@@ -1,7 +1,8 @@
 # COVID 19 App
 
 COVID 19 App is a web application used to display COVID-19 case and death statistics per country on a weekly basis.
-[COVID 19 App](/titleImageCovid.jpg)
+
+![COVID 19 App](/titleImageCovid.jpg)
 
 
 ## Installation
