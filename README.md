@@ -46,6 +46,9 @@ This will start a both live-reloading React development server as well as a live
 
 In this case, you can access the app on http://localhost:3000/, and the express server on http://localhost:3001/.
 
+(If the graph appears empty that means the data has not yet been fetched. Refresh when it has.)
+
+
 ### Docker
 
 This application has Docker functionality. If you want to create a Docker image of the production version of the application, run: 
