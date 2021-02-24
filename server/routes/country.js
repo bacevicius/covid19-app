@@ -29,7 +29,7 @@ router.get("/", (req, res) => {
       });
   
       // Keep only the essential data we need for the graph
-      let keys_to_keep = ["country", "year_week", "death_count", "case_count"];
+      let keys_to_keep = ["country", "year_week", "death_count", "case_count", "population"];
   
       let essentialData = (arr) =>
         arr.map((o) =>
