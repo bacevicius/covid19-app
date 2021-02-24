@@ -32,6 +32,7 @@ class Chart extends PureComponent {
               allowDataOverflow={true}
               domain={[0, "auto"]}
               tick={{ fontSize: "1.2rem", width: 250 }}
+              tickFormatter={(tickItem) => tickItem.toLocaleString()}
             />
             <Tooltip />
             <Legend verticalAlign="top" align="right" />
