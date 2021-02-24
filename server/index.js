@@ -34,7 +34,7 @@ app.listen(port, () => {
 
     // Say where the server is listening on the production build
     if (process.env.NODE_ENV != "development") {
-      console.log(`Server listening at http://localhost:${port}`);
+      console.log(`App listening at http://localhost:${port}`);
       console.log("If this is a dockerized instance, the app will probably be listening on a different port. Please check which port you exposed when running the docker container.")
     }
 
