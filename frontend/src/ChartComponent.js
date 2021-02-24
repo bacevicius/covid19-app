@@ -25,19 +25,28 @@ class Chart extends PureComponent {
               interval={this.props.data}
               angle={-30}
               tickMargin={25}
-              tick={{ fontSize: "1.2rem", width: 250 }}
+              tick={{
+                fontFamily: "Oxygen",
+                fontSize: "calc(8px + 2vmin)",
+              }}
             />
             <YAxis
               type="number"
               allowDataOverflow={true}
               domain={[0, "auto"]}
-              tick={{ fontSize: "1.2rem", width: 250 }}
+              tick={{ fontFamily: "Oxygen", fontSize: "calc(8px + 2vmin)" }}
               tickFormatter={(tickItem) => tickItem.toLocaleString()}
             />
             <Tooltip
               formatter={(tooltipItem) => tooltipItem.toLocaleString()}
             />
-            <Legend verticalAlign="top" align="right" />
+            <Legend
+              verticalAlign="top"
+              align="right"
+              wrapperStyle={{
+                paddingBottom: "15px",
+              }}
+            />
             <Area
               type="monotone"
               dataKey="case_count"
