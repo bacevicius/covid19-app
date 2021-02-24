@@ -1,82 +1,25 @@
 const express = require("express");
 const app = express();
-const path = require("path");
 const unirest = require("unirest");
 const port = 3001;
 
 // Create the global data object where we store the covid data once when we create the server
-var data;
+// Dirty, but that's what the assignment requires
+global.data;
 
-// If this is a production build, serve the static website on /
-if (process.env.NODE_ENV != "development") {
-  app.use(express.static(path.join(__dirname, "../frontend/build")));
-  app.get("/", (req, res) => {
-    res.sendFile("../frontend/build/index.html", { root: global });
-  });
-}
+// Define all the routes our express sever will use
+const main = require('./routes/app');
+const country = require('./routes/country');
+const allCountries = require('./routes/allcountries'); 
 
-// If this is a dev build, say hi
-else{
-  app.get("/", (req, res) => {
-    res.send("Vidas wishes you a nice day!");
-  });
-}
-
-// Get an array of all countries for construction of dropdown menu
-app.get("/allcountries", (req, res) => {
-  const distinctCountries = [...new Set(data.map((item) => item.country))];
-  res.send(distinctCountries);
-});
-
-// Rest api endpoint to get covid data by country
-app.get("/country", (req, res) => {
-  // Get the required country through the api parameter
-  let country = req.query.country;
-
-  // Filter the data array by the country
-  let countryArray = data.filter(function (el) {
-    return el.country === country;
-  });
-
-  function constructArray(array) {
-    let cases = [];
-    let deaths = [];
-
-    // Go through the country data array and split it into cases and deaths arrays
-    array.map((item) => {
-      if (item.indicator === "cases") {
-        cases.push(item);
-      } else deaths.push(item);
-    });
-
-    //Modify the cases array so that it contains the weekly case count and death count
-    cases.map(function (item, index) {
-      item["death_count"] = deaths[index].weekly_count;
-      item["case_count"] = item.weekly_count;
-    });
-
-    // Keep only the essential data we need for the graph
-    let keys_to_keep = ["country", "year_week", "death_count", "case_count"];
-
-    let essentialData = (arr) =>
-      arr.map((o) =>
-        keys_to_keep.reduce((acc, curr) => {
-          acc[curr] = o[curr];
-          return acc;
-        }, {})
-      );
-
-    return essentialData(cases);
-  }
-
-  const finalArray = constructArray(countryArray);
-
-  res.send(finalArray);
-});
+app.use("/", main);
+app.use("/country", country);
+app.use('/allcountries', allCountries);
 
 // Do this when creating the server
 app.listen(port, () => {
   console.log("Fetching data from covid API...");
+  
   //Do a get request to the required API and get the covid data
   const request = unirest.get(
     "https://opendata.ecdc.europa.eu/covid19/nationalcasedeath/json/"
