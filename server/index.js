@@ -4,8 +4,6 @@ const path = require("path");
 const unirest = require("unirest");
 const port = 3001;
 
-app.use(express.static(path.join(__dirname, '../frontend/build')));
-
 // Create the global data object where we store the covid data once when we create the server
 var data;
 
