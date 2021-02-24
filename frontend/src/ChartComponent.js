@@ -34,7 +34,9 @@ class Chart extends PureComponent {
               tick={{ fontSize: "1.2rem", width: 250 }}
               tickFormatter={(tickItem) => tickItem.toLocaleString()}
             />
-            <Tooltip />
+            <Tooltip
+              formatter={(tooltipItem) => tooltipItem.toLocaleString()}
+            />
             <Legend verticalAlign="top" align="right" />
             <Area
               type="monotone"
