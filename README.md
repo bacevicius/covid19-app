@@ -9,12 +9,17 @@ First, cd into a local directory and clone this repository:
 git clone https://github.com/bacevicius/covid19-app.git
 ```
 
-Then use the package manager [npm](https://www.npmjs.com/get-npm) to install this application. It will take a few minutes to install.
-
+Then use the package manager [npm](https://www.npmjs.com/get-npm) to install this application.
 ```bash
 cd covid19-app
 
 npm install
+```
+Lastly, install the server and frontend dependencies. It will take a few minutes to install.
+
+
+```
+npm run depinstall
 ```
 
 ## Starting the application
