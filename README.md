@@ -54,9 +54,9 @@ docker build -t covid19-app .
 ```
 Then, to run this image in a container, run:
 ```
-docker run -p 3001:3001 covid19-app
+docker run -p 8080:3001 covid19-app
 ```
-This will expose your Docker container to your host machine on port 3001 and you will be able to access the app on http://localhost:3001/ in your browser.
+This will expose your Docker container to your host machine on port 8080 and you will be able to access the app on http://localhost:8080/ in your browser.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

@@ -1,20 +1,31 @@
 const express = require("express");
 const app = express();
-const path = require('path');
+const path = require("path");
 const unirest = require("unirest");
 const port = 3001;
 
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 
-app.get('/', (req, res) => {
-  res.sendFile('../frontend/build/index.html', { root: global });
-});
-
-// Create the global data object where we store the data once when we create the server
+// Create the global data object where we store the covid data once when we create the server
 var data;
 
+// If this is a production build, serve the static website on /
+if (process.env.NODE_ENV != "development") {
+  app.use(express.static(path.join(__dirname, "../frontend/build")));
+  app.get("/", (req, res) => {
+    res.sendFile("../frontend/build/index.html", { root: global });
+  });
+}
+
+// If this is a dev build, say hi
+else{
+  app.get("/", (req, res) => {
+    res.send("Vidas wishes you a nice day!");
+  });
+}
+
+// Get an array of all countries for construction of dropdown menu
 app.get("/allcountries", (req, res) => {
-  // Get an array of all countries for construction of dropdown menu
   const distinctCountries = [...new Set(data.map((item) => item.country))];
   res.send(distinctCountries);
 });
@@ -40,8 +51,8 @@ app.get("/country", (req, res) => {
       } else deaths.push(item);
     });
 
-   //Modify the cases array so that it contains the weekly case count and death count 
-    cases.map(function(item, index) {
+    //Modify the cases array so that it contains the weekly case count and death count
+    cases.map(function (item, index) {
       item["death_count"] = deaths[index].weekly_count;
       item["case_count"] = item.weekly_count;
     });
@@ -67,8 +78,7 @@ app.get("/country", (req, res) => {
 
 // Do this when creating the server
 app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`);
-  console.log("Fetching data from covid API...")
+  console.log("Fetching data from covid API...");
   //Do a get request to the required API and get the covid data
   const request = unirest.get(
     "https://opendata.ecdc.europa.eu/covid19/nationalcasedeath/json/"
@@ -80,5 +90,12 @@ app.listen(port, () => {
     // Parse the response json data and save it in a global data object
     data = JSON.parse(JSON.stringify(response.body));
     console.log("Data fetched successfully.");
+
+    // Say where the server is listening on the production build
+    if (process.env.NODE_ENV != "development") {
+      console.log(`Server listening at http://localhost:${port}`);
+      console.log("If this is a dockerized instance, the app will probably be listening on a different port. Please check which port you exposed when running the docker container.")
+    }
+
   });
 });

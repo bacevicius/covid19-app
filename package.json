@@ -4,7 +4,7 @@
   "description": "Covid-19 app",
   "scripts": {
     "depinstall": "cd frontend && npm install --save --legacy-peer-deps && cd .. && cd server && npm install -save --legacy-peer-deps ",
-    "start-server-dev": "cd server && nodemon index.js",
+    "start-server-dev": "cd server && cross-env NODE_ENV=development nodemon index.js",
     "start-frontend-dev": "cd frontend && npm start",
     "start-server-prod": "cd server && node index.js",
     "start-frontend-prod": "cd frontend && npm run build",
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/bacevicius/covid19-app#readme",
   "dependencies": {
-    "concurrently": "^6.0.0"
+    "concurrently": "^6.0.0",
+    "cross-env": "^7.0.3"
   }
 }
