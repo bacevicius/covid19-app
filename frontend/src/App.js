@@ -6,8 +6,8 @@ import Chart from "./ChartComponent";
 function App() {
   const [error, setError] = useState(null);
   const [countries, setCountries] = useState([]);
-  const [country, setCountry] = useState("");
-  const [data, setData] = useState([]);
+  const [country, setCountry] = useState("Lithuania");
+  const [data, setData] = useState([{"population" :3000000}]);
 
   // This parses the list of all countries so it can be used with react-select
   const optionsParsed = countries.map((item) => ({ value: item, label: item }));
@@ -39,7 +39,6 @@ function App() {
       .then(
         (result) => {
           setCountries(result);
-          setCountry("Europe (total)");
         },
         (error) => {
           setError(error);
@@ -57,6 +56,7 @@ function App() {
       <body className="App-body">
         <h2>COVID-19 Weekly Statistics</h2>
         <h2>{country}</h2>
+        <p>Population : {data[0].population.toLocaleString()}</p>
         <Chart className="chart" country={country} data={data} />
         <Select
           className="country-select"
