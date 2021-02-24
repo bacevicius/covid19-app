@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "description": "Covid-19 app",
   "scripts": {
-    "postinstall": "cd frontend && npm install --save --legacy-peer-deps && cd .. && cd server && npm install -save --legacy-peer-deps ",
+    "depinstall": "cd frontend && npm install --save --legacy-peer-deps && cd .. && cd server && npm install -save --legacy-peer-deps ",
     "start-server-dev": "cd server && nodemon index.js",
     "start-frontend-dev": "cd frontend && npm start",
     "start-server-prod": "cd server && node index.js",
     "start-frontend-prod": "cd frontend && npm run build",
-
     "start-dev": "concurrently \"npm:start-server-dev\" \"npm:start-frontend-dev\"",
     "start-prod": "npm run start-frontend-prod && npm run start-server-prod"
   },
