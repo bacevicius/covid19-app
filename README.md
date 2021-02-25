@@ -18,7 +18,7 @@ cd covid19-app
 
 npm install
 ```
-Lastly, install the server and frontend dependencies. It will take a few minutes to install.
+Lastly, install the server and front-end dependencies. It will take a few minutes to install.
 
 
 ```
@@ -63,6 +63,11 @@ Then, to run this image in a container, run:
 docker run -p 8080:3001 covid19-app
 ```
 This will expose your Docker container to your host machine on port 8080 and you will be able to access the app on http://localhost:8080/ in your browser.
+
+
+## Information
+
+This app was built using Node.js and React. The front-end of this application is built with React and it uses Recharts for its chart drawing and react-select for the interactive dropdown menu. The backend is build with Express, a Node.js framework.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
