@@ -1,7 +1,7 @@
 {
   "name": "covid19-app",
   "version": "1.0.0",
-  "description": "Covid-19 app",
+  "description": "COVID-19 App",
   "scripts": {
     "depinstall": "cd frontend && npm install --save --legacy-peer-deps && cd .. && cd server && npm install -save --legacy-peer-deps ",
     "start-server-dev": "cd server && cross-env NODE_ENV=development nodemon index.js",
