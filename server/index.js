@@ -8,13 +8,13 @@ const port = 3001;
 global.data = [];
 
 // Define all the routes our express sever will use
-const main = require('./routes/app');
-const country = require('./routes/country');
-const allCountries = require('./routes/allcountries'); 
+const main = require("./routes/app");
+const country = require("./routes/country");
+const allCountries = require("./routes/allcountries");
 
 app.use("/", main);
 app.use("/country", country);
-app.use('/allcountries', allCountries);
+app.use("/allcountries", allCountries);
 
 // Do this when creating the server
 app.listen(port, () => {
@@ -35,8 +35,9 @@ app.listen(port, () => {
     // Say where the server is listening on the production build
     if (process.env.NODE_ENV != "development") {
       console.log(`App listening at http://localhost:${port}`);
-      console.log("If this is a dockerized instance, the app will probably be listening on a different port. Please check which port you exposed when running the docker container.")
+      console.log(
+        "If this is a dockerized instance, the app will probably be listening on a different port. Please check which port you exposed when running the docker container."
+      );
     }
-
   });
 });
