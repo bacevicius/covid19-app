@@ -1,13 +1,13 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "The backend for Covid-19 app",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Vidas Bacevičius",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
