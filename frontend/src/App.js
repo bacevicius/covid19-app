@@ -4,10 +4,11 @@ import Select from "react-select";
 import Chart from "./ChartComponent";
 
 function App() {
+  // States used
   const [error, setError] = useState(null);
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("Lithuania");
-  const [data, setData] = useState([{"population" :3000000}]);
+  const [data, setData] = useState([{ population: 3000000 }]);
 
   // This parses the list of all countries so it can be used with react-select
   const optionsParsed = countries.map((item) => ({ value: item, label: item }));
@@ -51,7 +52,7 @@ function App() {
   // This useEffect executes every time the country is updated, it calls the covid data update function
   useEffect(() => {
     fetchData(country);
-  },[country]);
+  }, [country]);
 
   return (
     <div className="App">
