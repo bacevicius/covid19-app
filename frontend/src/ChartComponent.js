@@ -27,14 +27,14 @@ class Chart extends PureComponent {
               tickMargin={25}
               tick={{
                 fontFamily: "Oxygen",
-                fontSize: "calc(8px + 2vmin)",
+                fontSize: "calc(6px + 2vmin)",
               }}
             />
             <YAxis
               type="number"
               allowDataOverflow={true}
               domain={[0, "auto"]}
-              tick={{ fontFamily: "Oxygen", fontSize: "calc(8px + 2vmin)" }}
+              tick={{ fontFamily: "Oxygen", fontSize: "calc(6px + 2vmin)" }}
               tickFormatter={(tickItem) => tickItem.toLocaleString()}
             />
             <Tooltip
@@ -44,7 +44,7 @@ class Chart extends PureComponent {
               verticalAlign="top"
               align="right"
               wrapperStyle={{
-                paddingBottom: "15px",
+                paddingBottom: "1.5vh",
               }}
             />
             <Area

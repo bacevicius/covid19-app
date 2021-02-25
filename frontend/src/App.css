@@ -16,6 +16,7 @@
 .country-select{
   width:30vw;
   min-width: 250px;
+  margin-top: 3vh;
   text-align: left;
   font-size: calc(6px + 1.5vmin);
 }
